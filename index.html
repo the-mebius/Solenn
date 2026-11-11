@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>  
+  <link rel="icon" type="image/ico" sizes="48x48" href="/icon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">  
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon/android-chrome-192x192.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOLENN — A Quiet Statement</title>
+  <link rel="stylesheet" href="cs/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            stoneBg: '#F6F4F0',
+            stoneSurface: '#EAE8E1',
+            archiveDark: '#121210',
+            mutedGray: '#6B6A65',
+            sageAccent: '#7B8B76',
+          },
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+            serif: ['Instrument Serif', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F6F4F0] text-[#121210] font-sans antialiased selection:bg-[#7B8B76] selection:text-[#F6F4F0]">
+
+  <!-- Announcement Bar -->
+  <div id="announcement-bar" class="bg-[#121210] text-[#F6F4F0] text-[11px] uppercase tracking-[0.25em] py-2.5 px-4 text-center font-medium relative z-50">
+    Drop 01: Private Access Opening Soon — <a href="#waitlist" class="underline underline-offset-4 hover:text-[#7B8B76] transition-colors">Join the Waitlist</a>
+  </div>
+
+  <!-- Header -->
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-[#F6F4F0]/95 backdrop-blur-md py-3 px-6 md:px-12 border-b border-[#121210]/10 opacity-0 -translate-y-full pointer-events-none text-[#121210]">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="font-serif text-2xl md:text-3xl tracking-[0.15em] uppercase font-semibold text-[#121210]">
+        SOLENN
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-[0.2em] font-medium text-[#121210]">
+        <a href="shop.html" class="hover:text-[#7B8B76] transition-colors">Catalogue</a>
+        <a href="collections.html" class="hover:text-[#7B8B76] transition-colors">Collections</a>
+        <a href="journal.html" class="hover:text-[#7B8B76] transition-colors">Journal</a>
+        <a href="archive.html" class="hover:text-[#7B8B76] transition-colors">Archive</a>
+        <a href="about.html" class="hover:text-[#7B8B76] transition-colors">About</a>
+      </nav>
+      <div class="flex items-center gap-6">
+        <button onclick="window.openSolennCart()" class="text-xs uppercase tracking-[0.2em] font-medium hover:text-[#7B8B76] transition-colors relative flex items-center gap-1.5">
+          <span>Bag</span>
+          <span id="cart-count-badge" class="px-1.5 py-0.5 bg-[#121210] text-[#F6F4F0] text-[10px] rounded-full">0</span>
+        </button>
+        <a href="#waitlist" class="text-[11px] uppercase tracking-[0.2em] px-6 py-2.5 bg-[#121210] text-[#F6F4F0] hover:bg-[#7B8B76] transition-colors font-medium">
+          Private Access
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Full-screen Cinematic Video Hero (Subtle & Minimal) -->
+  <section class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#121210]">
+    <div class="absolute inset-0 z-0 opacity-50 pointer-events-none">
+      <video autoplay muted loop playsinline class="w-full h-full object-cover">
+        <source src="./videos/Solenn.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 bg-[#121210]/40"></div>
+    </div>
+
+    <!-- Hero Content (Subtle & Refined) -->
+    <div class="relative z-10 text-center text-[#F6F4F0] px-6 max-w-3xl mx-auto mt-12">
+      <p class="text-xs uppercase tracking-[0.35em] text-[#F6F4F0]/70 mb-4 font-light">
+        S O L E N N
+      </p>
+      <h1 class="font-serif text-3xl md:text-5xl font-light tracking-[0.15em] mb-6 leading-tight">
+        A Quiet Statement.
+      </h1>
+      <p class="text-xs md:text-sm font-light text-[#F6F4F0]/80 max-w-md mx-auto mb-10 tracking-[0.2em] uppercase">
+      <br>
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="shop.html" class="px-8 py-3.5 bg-[#F6F4F0] text-[#121210] text-xs uppercase tracking-[0.25em] font-medium hover:bg-[#7B8B76] hover:text-[#F6F4F0] transition-all">
+          Explore Catalogue
+        </a>
+        <a href="#waitlist" class="px-8 py-3.5 border border-[#F6F4F0]/30 text-[#F6F4F0] text-xs uppercase tracking-[0.25em] font-medium hover:border-[#F6F4F0] transition-all">
+          Request Invitation
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#F6F4F0]/60 flex flex-col items-center gap-2 pointer-events-none">
+      <span class="text-[9px] uppercase tracking-[0.3em]">Scroll</span>
+      <div class="w-[1px] h-8 bg-[#F6F4F0]/30 animate-pulse"></div>
+    </div>
+  </section>
+
+  <!-- Brand Manifesto -->
+  <section class="py-28 px-6 md:px-12 max-w-5xl mx-auto text-center">
+    <p class="text-xs uppercase tracking-[0.3em] text-[#6B6A65] mb-4">The Philosophy</p>
+    <h2 class="font-serif text-3xl md:text-6xl font-light leading-relaxed mb-8">
+      "Style doesn't need to be loud."
+    </h2>
+    <div class="w-16 h-[1px] bg-[#121210]/20 mx-auto mb-8"></div>
+    <p class="text-base font-light text-[#6B6A65] max-w-2xl mx-auto leading-relaxed">
+      In an era saturated by noise and fleeting trends, SOLENN strips away the superfluous.
+      <br>We construct garments rooted in architectural proportion, tactile integrity, and timeless quietude.
+    </p>
+  </section>
+
+  <!-- Featured Drop 01 Grid (Linked to Real Products & Photos) -->
+  <section class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="flex justify-between items-end mb-12 border-b border-[#121210]/10 pb-6">
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-[#6B6A65] mb-2">Drop 01 &bull; Initial Release</p>
+        <h2 class="font-serif text-4xl md:text-6xl font-light">Featured Editions</h2>
+      </div>
+      <a href="shop.html" class="text-xs uppercase tracking-[0.2em] font-semibold hover:text-[#7B8B76] transition-colors">
+        View All Catalogue &rarr;
+      </a>
+    </div>
+
+    <!-- Previously: class="grid grid-cols-1 md:grid-cols-3 gap-8" -->
+<div id="homepage-product-scroll" class="flex gap-8 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8">
+  <!-- Product cards go here -->
+</div>
+  </section>
+
+  <!-- Editorial Campaign Banner -->
+  <section class="py-24 px-6 md:px-12 bg-[#EAE8E1] my-20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-[#6B6A65] mb-3">Editorial Campaign &bull; Autumn 2026</p>
+        <h2 class="font-serif text-4xl md:text-6xl font-light mb-6">The Brutalist Silhouettes</h2>
+        <p class="text-base font-light text-[#6B6A65] leading-relaxed mb-8">
+          Photographed on location in Paris. Exploring the intersection of concrete architecture and heavyweight unbrushed cotton twill.
+        </p>
+        <a href="journal.html" class="inline-block px-8 py-4 bg-[#121210] text-[#F6F4F0] text-xs uppercase tracking-[0.2em] hover:bg-[#7B8B76] transition-colors">
+          Read Journal Dispatch
+        </a>
+      </div>
+      <div class="aspect-[4/3] bg-[#121210] overflow-hidden">
+        <img src="/images/Solenn Lookbook.png" alt="Editorial Campaign" class="w-full h-full object-fit opacity-90">
+      </div>
+    </div>
+  </section>
+
+  <!-- Private Access Waitlist Section -->
+  <section id="waitlist" class="bg-[#121210] text-[#F6F4F0] py-28 px-6 md:px-12 my-20 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="text-xs uppercase tracking-[0.3em] text-[#7B8B76] mb-4">Private Access</p>
+      <h2 class="font-serif text-5xl md:text-7xl font-light mb-6">Join the Registry</h2>
+      <p class="text-base font-light text-[#F6F4F0]/70 mb-10">
+        Register for early notification ahead of Drop 02 allocations and private showroom viewings in Paris and New York.
+      </p>
+      <form onsubmit="handleWaitlist(event)" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+        <input type="email" id="waitlist-email" required placeholder="Enter your email address" class="flex-1 px-6 py-4 bg-transparent border border-[#F6F4F0]/30 text-[#F6F4F0] placeholder-[#F6F4F0]/40 text-xs uppercase tracking-widest focus:outline-none focus:border-[#7B8B76]">
+        <button type="submit" class="px-8 py-4 bg-[#F6F4F0] text-[#121210] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#7B8B76] hover:text-[#F6F4F0] transition-colors">
+          Request Access
+        </button>
+      </form>
+      <p id="waitlist-success" class="hidden mt-4 text-xs uppercase tracking-widest text-[#7B8B76]">Thank you. Your request has been registered.</p>
+    </div>
+  </section>
+
+<!-- Footer -->
+  <footer class="bg-[#121210] text-[#F6F4F0] pt-8 pb-3 px-6 md:px-12 border-t border-[#F6F4F0]/10 mt-auto">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-16 text-xs">
+      <!-- Col 1: Brand & Tagline -->
+      <div class="space-y-3">
+        <a href="index.html" class="font-serif text-2xl tracking-[0.15em] uppercase font-semibold block text-[#F6F4F0]">
+          SOLENN
+        </a>
+        <p class="uppercase tracking-[0.2em] text-[#F6F4F0]/60 leading-relaxed text-[11px]">
+          A Quiet Statement.
+        </p>
+        <p class="uppercase tracking-[0.2em] text-[#F6F4F0]/40 text-[10px] pt-2">
+          Paris &bull; New York
+        </p>
+      </div>
+
+      <!-- Col 2: Navigation -->
+      <div>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-4 font-medium text-[11px]">Navigation</h4>
+        <ul class="space-y-2 uppercase tracking-widest text-[#F6F4F0]/70 text-[11px]">
+          <li><a href="shop.html" class="hover:text-[#F6F4F0] transition-colors">Shop</a></li>
+          <li><a href="collections.html" class="hover:text-[#F6F4F0] transition-colors">Collections</a></li>
+          <li><a href="about.html" class="hover:text-[#F6F4F0] transition-colors">About</a></li>
+          <li><a href="journal.html" class="hover:text-[#F6F4F0] transition-colors">Journal</a></li>
+          <li><a href="about.html#contact" class="hover:text-[#F6F4F0] transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Client Care -->
+      <div>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-4 font-medium text-[11px]">Client Care</h4>
+        <ul class="space-y-2 uppercase tracking-widest text-[#F6F4F0]/70 text-[11px]">
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">FAQ</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Shipping</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Returns</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Terms and Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Connect & Newsletter -->
+      <div>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-4 font-medium text-[11px]">Connect</h4>
+        <ul class="space-y-2 uppercase tracking-widest text-[#F6F4F0]/70 text-[11px] mb-6">
+          <li><a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-[#F6F4F0] transition-colors">Instagram</a></li>
+        </ul>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-2 font-medium text-[11px]">Newsletter</h4>
+        <form onsubmit="event.preventDefault(); alert('Subscribed to SOLENN updates.');" class="flex">
+          <input type="email" placeholder="Email address" required class="bg-[#F6F4F0]/10 border border-[#F6F4F0]/20 px-3 py-2 text-xs text-[#F6F4F0] placeholder-[#F6F4F0]/40 focus:outline-none focus:border-[#7B8B76] w-full">
+          <button type="submit" class="bg-[#F6F4F0] text-[#121210] px-4 py-2 text-xs uppercase tracking-widest font-medium hover:bg-[#7B8B76] hover:text-[#F6F4F0] transition-colors">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-2 border-t border-[#F6F4F0]/10 flex flex-col md:flex-row justify-between items-center text-[10px] text-[#F6F4F0]/40 uppercase tracking-widest gap-2">
+      <p>&copy; 2026 SOLENN LABEL INC. ALL RIGHTS RESERVED.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-[#F6F4F0] transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-[#F6F4F0] transition-colors">Terms and Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/index.js"></script>
+  <script type="module" src="js/cart-drawer.js"></script>
+ </body>
+</html>

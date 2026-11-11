@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <link rel="icon" type="image/ico" sizes="48x48" href="/icon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon/android-chrome-192x192.png">
+  <link rel="manifest" href="/icon/site.webmanifest">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Archive — SOLENN</title>
+  <link rel="stylesheet" href="cs/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            stoneBg: '#F6F4F0',
+            stoneSurface: '#EAE8E1',
+            archiveDark: '#121210',
+            mutedGray: '#6B6A65',
+            sageAccent: '#7B8B76',
+          },
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+            serif: ['Instrument Serif', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F6F4F0] text-[#121210] font-sans antialiased selection:bg-[#7B8B76] selection:text-[#F6F4F0] min-h-screen flex flex-col justify-between">
+
+  <!-- Announcement Bar -->
+  <div id="announcement-bar" class="bg-[#121210] text-[#F6F4F0] text-[11px] uppercase tracking-[0.25em] py-2.5 px-4 text-center font-medium relative z-50">
+    Drop 01: Private Access Opening Soon — <a href="index.html#waitlist" class="underline underline-offset-4 hover:text-[#7B8B76] transition-colors">Join the Waitlist</a>
+  </div>
+
+  <!-- Header -->
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-[#F6F4F0]/95 backdrop-blur-md py-3 px-6 md:px-12 border-b border-[#121210]/10 opacity-0 -translate-y-full pointer-events-none text-[#121210]">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="font-serif text-2xl md:text-3xl tracking-[0.15em] uppercase font-semibold text-[#121210]">
+        SOLENN
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-[0.2em] font-medium text-[#121210]">
+        <a href="shop.html" class="hover:text-[#7B8B76] transition-colors">Catalogue</a>
+        <a href="collections.html" class="hover:text-[#7B8B76] transition-colors">Collections</a>
+        <a href="journal.html" class="hover:text-[#7B8B76] transition-colors">Journal</a>
+        <a href="archive.html" class="text-[#7B8B76] font-semibold transition-colors">Archive</a>
+        <a href="about.html" class="hover:text-[#7B8B76] transition-colors">About</a>
+      </nav>
+      <div class="flex items-center gap-6">
+        <button onclick="window.openSolennCart()" class="text-xs uppercase tracking-[0.2em] font-medium hover:text-[#7B8B76] transition-colors relative flex items-center gap-1.5">
+          <span>Bag</span>
+          <span id="cart-count-badge" class="px-1.5 py-0.5 bg-[#121210] text-[#F6F4F0] text-[10px] rounded-full">0</span>
+        </button>
+        <a href="index.html#waitlist" class="text-[11px] uppercase tracking-[0.2em] px-6 py-2.5 bg-[#121210] text-[#F6F4F0] hover:bg-[#7B8B76] transition-colors font-medium">
+          Private Access
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Archive Content Container -->
+  <main class="flex-1">
+
+    <!-- VIEW 1: ARCHIVE INDEX -->
+    <div id="archive-index-view">
+
+      <!-- Section 01 — Archive Hero -->
+      <section class="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="max-w-3xl mb-16">
+          <p class="text-xs uppercase tracking-[0.35em] text-[#6B6A65] mb-4">Permanent Record &bull; Est. 2026</p>
+          <h1 class="font-serif text-6xl md:text-9xl font-light tracking-tight mb-6">THE ARCHIVE</h1>
+          <p class="font-serif text-2xl md:text-4xl text-[#7B8B76] font-light mb-8 italic">"A record of collections, campaigns and moments."</p>
+          <div class="w-16 h-[1px] bg-[#121210]/20 mb-8"></div>
+          <p class="text-base md:text-lg font-light text-[#6B6A65] leading-relaxed">
+            A visual repository cataloging every SOLENN release, architectural study, and editorial campaign.
+          </p>
+        </div>
+
+        <!-- Hero Editorial Image -->
+        <div class="w-full aspect-[16/9] md:aspect-[21/9] bg-[#EAE8E1] overflow-hidden relative shadow-lg group">
+          <img src="/images/Solenn Lookbook.png" alt="SOLENN Archive Lookbook" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+        </div>
+      </section>
+
+      <!-- Section 02 — Collection Gallery -->
+      <section class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="mb-16 border-b border-[#121210]/10 pb-6 flex justify-between items-end">
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-[#6B6A65] mb-2">Releases &bull; Chronological</p>
+            <h2 class="font-serif text-4xl md:text-6xl font-light">Collection Directory</h2>
+          </div>
+          <span class="text-xs uppercase tracking-[0.2em] text-[#6B6A65] hidden sm:inline-block">Total Editions: 01</span>
+        </div>
+
+        <div id="collections-grid" class="space-y-24">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </section>
+
+      <!-- Closing Statement -->
+      <section class="bg-[#121210] text-[#F6F4F0] py-32 px-6 md:px-12 text-center my-20">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="font-serif text-4xl md:text-7xl font-light tracking-tight leading-tight mb-12">
+            "Not everything needs to be loud to be noticed."
+          </h2>
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+            <a href="shop.html" class="px-8 py-4 bg-[#F6F4F0] text-[#121210] text-xs uppercase tracking-[0.25em] font-medium hover:bg-[#7B8B76] hover:text-[#F6F4F0] transition-all">
+              Explore Catalogue
+            </a>
+            <a href="journal.html" class="px-8 py-4 border border-[#F6F4F0]/30 text-[#F6F4F0] text-xs uppercase tracking-[0.25em] font-medium hover:border-[#F6F4F0] transition-all">
+              Read Journal
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- VIEW 2: COLLECTION DETAIL VIEW (Hidden by default) -->
+    <div id="collection-detail-view" class="hidden py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+      <button onclick="closeCollection()" class="mb-12 text-xs uppercase tracking-[0.25em] text-[#6B6A65] hover:text-[#121210] transition-colors flex items-center gap-2">
+        <span>&larr; Back to Archive</span>
+      </button>
+
+      <div id="collection-content-container">
+        <!-- Dynamically injected collection detail -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#121210] text-[#F6F4F0] pt-8 pb-3 px-6 md:px-12 border-t border-[#F6F4F0]/10 mt-auto">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-16 text-xs">
+      <!-- Col 1: Brand & Tagline -->
+      <div class="space-y-3">
+        <a href="index.html" class="font-serif text-2xl tracking-[0.15em] uppercase font-semibold block text-[#F6F4F0]">
+          SOLENN
+        </a>
+        <p class="uppercase tracking-[0.2em] text-[#F6F4F0]/60 leading-relaxed text-[11px]">
+          A Quiet Statement.
+        </p>
+        <p class="uppercase tracking-[0.2em] text-[#F6F4F0]/40 text-[10px] pt-2">
+          Paris &bull; New York
+        </p>
+      </div>
+
+      <!-- Col 2: Navigation -->
+      <div>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-4 font-medium text-[11px]">Navigation</h4>
+        <ul class="space-y-2 uppercase tracking-widest text-[#F6F4F0]/70 text-[11px]">
+          <li><a href="shop.html" class="hover:text-[#F6F4F0] transition-colors">Shop</a></li>
+          <li><a href="collections.html" class="hover:text-[#F6F4F0] transition-colors">Collections</a></li>
+          <li><a href="journal.html" class="hover:text-[#F6F4F0] transition-colors">Journal</a></li>
+          <li><a href="archive.html" class="hover:text-[#F6F4F0] transition-colors">Archive</a></li>
+          <li><a href="about.html" class="hover:text-[#F6F4F0] transition-colors">About</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Client Care -->
+      <div>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-4 font-medium text-[11px]">Client Care</h4>
+        <ul class="space-y-2 uppercase tracking-widest text-[#F6F4F0]/70 text-[11px]">
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">FAQ</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Shipping</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Returns</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Terms and Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Connect & Newsletter -->
+      <div>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-4 font-medium text-[11px]">Connect</h4>
+        <ul class="space-y-2 uppercase tracking-widest text-[#F6F4F0]/70 text-[11px] mb-6">
+          <li><a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-[#F6F4F0] transition-colors">Instagram</a></li>
+        </ul>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-2 font-medium text-[11px]">Newsletter</h4>
+        <form onsubmit="event.preventDefault(); alert('Subscribed to SOLENN updates.');" class="flex">
+          <input type="email" placeholder="Email address" required class="bg-[#F6F4F0]/10 border border-[#F6F4F0]/20 px-3 py-2 text-xs text-[#F6F4F0] placeholder-[#F6F4F0]/40 focus:outline-none focus:border-[#7B8B76] w-full">
+          <button type="submit" class="bg-[#F6F4F0] text-[#121210] px-4 py-2 text-xs uppercase tracking-widest font-medium hover:bg-[#7B8B76] hover:text-[#F6F4F0] transition-colors">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-2 border-t border-[#F6F4F0]/10 flex flex-col md:flex-row justify-between items-center text-[10px] text-[#F6F4F0]/40 uppercase tracking-widest gap-2">
+      <p>&copy; 2026 SOLENN LABEL INC. ALL RIGHTS RESERVED.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-[#F6F4F0] transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-[#F6F4F0] transition-colors">Terms and Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="js/index.js"></script>
+  <script type="module" src="js/cart-drawer.js"></script>
+  <script>
+    // Inline Collection Database (Rule 6: simple structure inside Archive implementation)
+    const collections = [
+      {
+        id: 'col-001',
+        number: '001',
+        name: 'The First Edition',
+        status: 'Upcoming',
+        releaseDate: 'To be announced',
+        description: 'An introduction to the first SOLENN collection, exploring everyday essentials, considered silhouettes and understated expression.',
+        mainImage: '/images/Solenn Lookbook.png',
+        introduction: 'The First Edition lays the foundational grammar of SOLENN. Conceived in Paris and refined in New York, this inaugural release explores the intersection of brutalist architecture and tactile unbrushed cotton twills.',
+        editorialGallery: [
+          { src: '/images/washed/Washed front.jpg', caption: 'Charcoal Washed Essential' },
+          { src: '/images/black/black front.jpg', caption: 'Solid Black Edition' },
+          { src: '/images/olive/olive front.jpg', caption: 'Olive Utility' },
+          { src: '/images/beige/beige front.jpg', caption: 'Light Beige Sports' }
+        ],
+        productsIncluded: [
+          { name: 'Washed Essential', color: 'Charcoal Black', price: '€45', image: '/images/washed/Washed front.jpg' },
+          { name: 'Black Essential', color: 'Solid Black', price: '€50', image: '/images/black/black front.jpg' },
+          { name: 'Beige Sports', color: 'Light Beige', price: '€55', image: '/images/beige/beige front.jpg' },
+          { name: 'Olive Utility', color: 'Olive Green', price: '€50', image: '/images/olive/olive front.jpg' },
+          { name: 'Navy Blue Performance', color: 'Navy Blue', price: '€55', image: '/images/blue/blue front.jpg' }
+        ]
+      }
+    ];
+
+    // Render collection directory grid
+    function renderCollections() {
+      const grid = document.getElementById('collections-grid');
+      if (!grid) return;
+
+      grid.innerHTML = collections.map((col, index) => {
+        // Asymmetric alternating layout
+        const isEven = index % 2 === 0;
+        return `
+          <div onclick="openCollection('${col.id}')" class="group cursor-pointer grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#EAE8E1]/30 p-8 md:p-12 border border-[#121210]/10 hover:border-[#7B8B76] transition-all">
+            <div class="lg:col-span-7 ${isEven ? 'order-1' : 'order-1 lg:order-2'} aspect-[16/10] bg-[#EAE8E1] overflow-hidden relative">
+              <img src="${col.mainImage}" alt="${col.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute top-4 left-4 bg-[#121210] text-[#F6F4F0] px-3 py-1 text-[10px] uppercase tracking-widest font-medium">
+                ${col.status}
+              </div>
+            </div>
+            <div class="lg:col-span-5 ${isEven ? 'order-2' : 'order-2 lg:order-1'} space-y-6">
+              <div class="flex items-center gap-4 text-xs uppercase tracking-[0.25em] text-[#7B8B76]">
+                <span class="font-serif text-3xl font-light">${col.number}</span>
+                <span>&bull;</span>
+                <span>${col.releaseDate}</span>
+              </div>
+              <h3 class="font-serif text-4xl md:text-5xl font-light group-hover:text-[#7B8B76] transition-colors leading-tight">
+                ${col.name}
+              </h3>
+              <p class="text-sm font-light text-[#6B6A65] leading-relaxed">
+                ${col.description}
+              </p>
+              <div class="pt-4 flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold">
+                <span>View Collection Archive</span>
+                <span class="group-hover:translate-x-2 transition-transform">&rarr;</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Open collection detail view
+    window.openCollection = function(id) {
+      const col = collections.find(c => c.id === id);
+      if (!col) return;
+
+      const indexView = document.getElementById('archive-index-view');
+      const detailView = document.getElementById('collection-detail-view');
+      const container = document.getElementById('collection-content-container');
+
+      indexView.classList.add('hidden');
+      detailView.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.location.hash = id;
+
+      container.innerHTML = `
+        <div class="max-w-4xl mb-16">
+          <div class="flex items-center gap-4 text-xs uppercase tracking-[0.25em] text-[#7B8B76] mb-4">
+            <span class="font-serif text-4xl font-light">${col.number}</span>
+            <span>&bull;</span>
+            <span class="px-3 py-1 bg-[#121210] text-[#F6F4F0] text-[10px]">${col.status}</span>
+            <span>&bull;</span>
+            <span>${col.releaseDate}</span>
+          </div>
+          <h1 class="font-serif text-5xl md:text-8xl font-light mb-6">${col.name}</h1>
+          <p class="text-lg md:text-xl font-light text-[#6B6A65] leading-relaxed italic border-l-2 border-[#7B8B76] pl-6 mb-8">
+            "${col.description}"
+          </p>
+          <p class="text-base font-light text-[#6B6A65] leading-relaxed">
+            ${col.introduction}
+          </p>
+        </div>
+
+        <!-- Main Campaign Photograph -->
+        <div class="aspect-[21/9] bg-[#EAE8E1] mb-16 overflow-hidden shadow-lg">
+          <img src="${col.mainImage}" alt="${col.name}" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Editorial Photography Gallery -->
+        <div class="mb-20">
+          <h3 class="font-serif text-3xl mb-8">Editorial Impressions</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            ${col.editorialGallery.map(img => `
+              <div>
+                <div class="aspect-[4/3] bg-[#EAE8E1] overflow-hidden mb-3 shadow-md">
+                  <img src="${img.src}" alt="${img.caption}" class="w-full h-full object-cover">
+                </div>
+                <p class="text-[11px] uppercase tracking-widest text-[#6B6A65]">${img.caption}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Products Included in the Collection -->
+        <div class="border-t border-[#121210]/10 pt-16">
+          <div class="flex justify-between items-end mb-10">
+            <div>
+              <p class="text-xs uppercase tracking-[0.3em] text-[#6B6A65] mb-2">Drop 01 &bull; Editions</p>
+              <h3 class="font-serif text-4xl">Included Pieces</h3>
+            </div>
+            <a href="shop.html" class="text-xs uppercase tracking-[0.2em] font-semibold hover:text-[#7B8B76] transition-colors">
+              Explore Catalogue &rarr;
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            ${col.productsIncluded.map(p => `
+              <div class="bg-[#EAE8E1]/30 p-6 border border-[#121210]/10">
+                <div class="aspect-[4/5] bg-[#EAE8E1] overflow-hidden mb-4">
+                  <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                </div>
+                <div class="flex justify-between items-baseline mb-1">
+                  <h4 class="font-serif text-2xl">${p.name}</h4>
+                  <span class="text-sm font-medium">${p.price}</span>
+                </div>
+                <p class="text-xs uppercase tracking-widest text-[#6B6A65]">${p.color}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // Close collection detail view
+    window.closeCollection = function() {
+      const indexView = document.getElementById('archive-index-view');
+      const detailView = document.getElementById('collection-detail-view');
+
+      detailView.classList.add('hidden');
+      indexView.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+
+    // Initialize on load & handle hash navigation
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCollections();
+
+      if (window.location.hash) {
+        const id = window.location.hash.substring(1);
+        if (collections.some(c => c.id === id)) {
+          openCollection(id);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

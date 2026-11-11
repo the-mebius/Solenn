@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "name": "Washed Essential",
+    "color": "Charcoal Black",
+    "price": 45,
+    "image": "/images/washed/Washed front.jpg",
+    "url": "product-washed-essential.html"
+  },
+  {
+    "id": "2",
+    "name": "Black Essential",
+    "color": "Solid Black",
+    "price": 50,
+    "image": "/images/black/black front.jpg",
+    "url": "product-black-essential.html"
+  },
+  {
+    "id": "3",
+    "name": "Beige Sports",
+    "color": "Light Beige",
+    "price": 55,
+    "image": "/images/beige/beige front.jpg",
+    "url": "product-beige-sports.html"
+  },
+  {
+    "id": "4",
+    "name": "Olive Utility",
+    "color": "Olive Green",
+    "price": 50,
+    "image": "/images/olive/olive front.jpg",
+    "url": "product-olive-utility.html"
+  },
+  {
+    "id": "5",
+    "name": "Navy Blue Performance",
+    "color": "Navy Blue",
+    "price": 55,
+    "image": "/images/blue/blue front.jpg",
+    "url": "product-navy-performance.html"
+  }
+]

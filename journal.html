@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <link rel="icon" type="image/ico" sizes="48x48" href="/icon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon/android-chrome-192x192.png">
+  <link rel="manifest" href="/icon/site.webmanifest">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Journal — SOLENN</title>
+  <link rel="stylesheet" href="cs/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            stoneBg: '#F6F4F0',
+            stoneSurface: '#EAE8E1',
+            archiveDark: '#121210',
+            mutedGray: '#6B6A65',
+            sageAccent: '#7B8B76',
+          },
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+            serif: ['Instrument Serif', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F6F4F0] text-[#121210] font-sans antialiased selection:bg-[#7B8B76] selection:text-[#F6F4F0] min-h-screen flex flex-col justify-between">
+
+  <!-- Announcement Bar -->
+  <div id="announcement-bar" class="bg-[#121210] text-[#F6F4F0] text-[11px] uppercase tracking-[0.25em] py-2.5 px-4 text-center font-medium relative z-50">
+    Drop 01: Private Access Opening Soon — <a href="index.html#waitlist" class="underline underline-offset-4 hover:text-[#7B8B76] transition-colors">Join the Waitlist</a>
+  </div>
+
+  <!-- Header -->
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-[#F6F4F0]/95 backdrop-blur-md py-3 px-6 md:px-12 border-b border-[#121210]/10 opacity-0 -translate-y-full pointer-events-none text-[#121210]">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="font-serif text-2xl md:text-3xl tracking-[0.15em] uppercase font-semibold text-[#121210]">
+        SOLENN
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-[0.2em] font-medium text-[#121210]">
+        <a href="shop.html" class="hover:text-[#7B8B76] transition-colors">Catalogue</a>
+        <a href="collections.html" class="hover:text-[#7B8B76] transition-colors">Collections</a>
+        <a href="journal.html" class="text-[#7B8B76] font-semibold transition-colors">Journal</a>
+        <a href="archive.html" class="hover:text-[#7B8B76] transition-colors">Archive</a>
+        <a href="about.html" class="hover:text-[#7B8B76] transition-colors">About</a>
+      </nav>
+      <div class="flex items-center gap-6">
+        <button onclick="window.openSolennCart()" class="text-xs uppercase tracking-[0.2em] font-medium hover:text-[#7B8B76] transition-colors relative flex items-center gap-1.5">
+          <span>Bag</span>
+          <span id="cart-count-badge" class="px-1.5 py-0.5 bg-[#121210] text-[#F6F4F0] text-[10px] rounded-full">0</span>
+        </button>
+        <a href="index.html#waitlist" class="text-[11px] uppercase tracking-[0.2em] px-6 py-2.5 bg-[#121210] text-[#F6F4F0] hover:bg-[#7B8B76] transition-colors font-medium">
+          Private Access
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container (Switches between Journal Index and Article View) -->
+  <main class="flex-1">
+
+    <!-- VIEW 1: JOURNAL INDEX -->
+    <div id="journal-index-view">
+
+      <!-- Section 01 — Journal Hero -->
+      <section class="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="max-w-3xl mb-16">
+          <p class="text-xs uppercase tracking-[0.35em] text-[#6B6A65] mb-4">Publication &bull; Vol. 01</p>
+          <h1 class="font-serif text-6xl md:text-9xl font-light tracking-tight mb-6">THE JOURNAL</h1>
+          <p class="font-serif text-2xl md:text-4xl text-[#7B8B76] font-light mb-8 italic">"Notes on style, design, culture and everything in between."</p>
+          <div class="w-16 h-[1px] bg-[#121210]/20 mb-8"></div>
+          <p class="text-base md:text-lg font-light text-[#6B6A65] leading-relaxed">
+            An ongoing editorial collection documenting the philosophy, material studies, and cultural landscapes that inform SOLENN.
+          </p>
+        </div>
+
+        <!-- Hero Editorial Photograph -->
+        <div class="w-full aspect-[16/9] md:aspect-[21/9] bg-[#EAE8E1] overflow-hidden relative shadow-lg group">
+          <img src="/images/Solenn Lookbook.png" alt="SOLENN Journal Hero" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+        </div>
+      </section>
+
+      <!-- Section 02 — Featured Story -->
+      <section class="py-16 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="mb-8 flex items-center justify-between border-b border-[#121210]/10 pb-4">
+          <span class="text-xs uppercase tracking-[0.3em] text-[#7B8B76] font-semibold">Featured Dispatch</span>
+          <span class="text-xs uppercase tracking-[0.2em] text-[#6B6A65]">October 24, 2026</span>
+        </div>
+
+        <div onclick="openArticle('art-1')" class="group cursor-pointer grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#EAE8E1]/40 p-6 md:p-10 border border-[#121210]/10 hover:border-[#7B8B76] transition-all">
+          <div class="lg:col-span-7 aspect-[16/10] bg-[#EAE8E1] overflow-hidden relative">
+            <img src="/images/washed/Washed front.jpg" alt="The Art of Wearing Less" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          </div>
+          <div class="lg:col-span-5 space-y-4">
+            <span class="inline-block px-3 py-1 bg-[#121210] text-[#F6F4F0] text-[10px] uppercase tracking-widest">Style Notes</span>
+            <h2 class="font-serif text-3xl md:text-5xl font-light group-hover:text-[#7B8B76] transition-colors leading-tight">
+              The Art of Wearing Less
+            </h2>
+            <p class="text-sm font-light text-[#6B6A65] leading-relaxed">
+              True elegance lies in subtraction. Exploring why stripping away the non-essential elevates personal style to an enduring art form.
+            </p>
+            <div class="pt-4 flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold">
+              <span>Read Dispatch</span>
+              <span class="group-hover:translate-x-2 transition-transform">&rarr;</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 03 — Article Collection & Filters -->
+      <section class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-[#121210]/10 pb-6 mb-12 gap-6">
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-[#6B6A65] mb-2">Archive &bull; All Stories</p>
+            <h2 class="font-serif text-4xl md:text-6xl font-light">Editorial Collection</h2>
+          </div>
+
+          <!-- Category Filters -->
+          <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em]" id="journal-filters">
+            <button onclick="filterArticles('all')" class="journal-filter-btn px-4 py-2 bg-[#121210] text-[#F6F4F0] transition-colors" data-category="all">All Stories</button>
+            <button onclick="filterArticles('Style Notes')" class="journal-filter-btn px-4 py-2 bg-[#EAE8E1] text-[#121210] hover:bg-[#121210] hover:text-[#F6F4F0] transition-colors" data-category="Style Notes">Style Notes</button>
+            <button onclick="filterArticles('Design & Detail')" class="journal-filter-btn px-4 py-2 bg-[#EAE8E1] text-[#121210] hover:bg-[#121210] hover:text-[#F6F4F0] transition-colors" data-category="Design & Detail">Design & Detail</button>
+            <button onclick="filterArticles('Culture & People')" class="journal-filter-btn px-4 py-2 bg-[#EAE8E1] text-[#121210] hover:bg-[#121210] hover:text-[#F6F4F0] transition-colors" data-category="Culture & People">Culture & People</button>
+            <button onclick="filterArticles('Solenn Stories')" class="journal-filter-btn px-4 py-2 bg-[#EAE8E1] text-[#121210] hover:bg-[#121210] hover:text-[#F6F4F0] transition-colors" data-category="Solenn Stories">Solenn Stories</button>
+          </div>
+        </div>
+
+        <!-- Article Cards Grid -->
+        <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </section>
+
+      <!-- Section 04 — Closing Section -->
+      <section class="bg-[#121210] text-[#F6F4F0] py-32 px-6 md:px-12 text-center my-20">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="font-serif text-4xl md:text-7xl font-light tracking-tight leading-tight mb-12">
+            "An ongoing conversation about personal style."
+          </h2>
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+            <a href="shop.html" class="px-8 py-4 bg-[#F6F4F0] text-[#121210] text-xs uppercase tracking-[0.25em] font-medium hover:bg-[#7B8B76] hover:text-[#F6F4F0] transition-all">
+              Explore Collection
+            </a>
+            <a href="about.html" class="px-8 py-4 border border-[#F6F4F0]/30 text-[#F6F4F0] text-xs uppercase tracking-[0.25em] font-medium hover:border-[#F6F4F0] transition-all">
+              About SOLENN
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- VIEW 2: ARTICLE DETAIL VIEW (Hidden by default) -->
+    <div id="article-detail-view" class="hidden py-24 md:py-32 px-6 md:px-12 max-w-4xl mx-auto">
+      <button onclick="closeArticle()" class="mb-12 text-xs uppercase tracking-[0.25em] text-[#6B6A65] hover:text-[#121210] transition-colors flex items-center gap-2">
+        <span>&larr; Back to Journal</span>
+      </button>
+
+      <div id="article-content-container">
+        <!-- Dynamically injected article detail -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#121210] text-[#F6F4F0] pt-8 pb-3 px-6 md:px-12 border-t border-[#F6F4F0]/10 mt-auto">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-16 text-xs">
+      <!-- Col 1: Brand & Tagline -->
+      <div class="space-y-3">
+        <a href="index.html" class="font-serif text-2xl tracking-[0.15em] uppercase font-semibold block text-[#F6F4F0]">
+          SOLENN
+        </a>
+        <p class="uppercase tracking-[0.2em] text-[#F6F4F0]/60 leading-relaxed text-[11px]">
+          A Quiet Statement.
+        </p>
+        <p class="uppercase tracking-[0.2em] text-[#F6F4F0]/40 text-[10px] pt-2">
+          Paris &bull; New York
+        </p>
+      </div>
+
+      <!-- Col 2: Navigation -->
+      <div>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-4 font-medium text-[11px]">Navigation</h4>
+        <ul class="space-y-2 uppercase tracking-widest text-[#F6F4F0]/70 text-[11px]">
+          <li><a href="shop.html" class="hover:text-[#F6F4F0] transition-colors">Shop</a></li>
+          <li><a href="collections.html" class="hover:text-[#F6F4F0] transition-colors">Collections</a></li>
+          <li><a href="journal.html" class="hover:text-[#F6F4F0] transition-colors">Journal</a></li>
+          <li><a href="archive.html" class="hover:text-[#F6F4F0] transition-colors">Archive</a></li>
+          <li><a href="about.html" class="hover:text-[#F6F4F0] transition-colors">About</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Client Care -->
+      <div>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-4 font-medium text-[11px]">Client Care</h4>
+        <ul class="space-y-2 uppercase tracking-widest text-[#F6F4F0]/70 text-[11px]">
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">FAQ</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Shipping</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Returns</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-[#F6F4F0] transition-colors">Terms and Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Connect & Newsletter -->
+      <div>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-4 font-medium text-[11px]">Connect</h4>
+        <ul class="space-y-2 uppercase tracking-widest text-[#F6F4F0]/70 text-[11px] mb-6">
+          <li><a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-[#F6F4F0] transition-colors">Instagram</a></li>
+        </ul>
+        <h4 class="uppercase tracking-[0.25em] text-[#7B8B76] mb-2 font-medium text-[11px]">Newsletter</h4>
+        <form onsubmit="event.preventDefault(); alert('Subscribed to SOLENN updates.');" class="flex">
+          <input type="email" placeholder="Email address" required class="bg-[#F6F4F0]/10 border border-[#F6F4F0]/20 px-3 py-2 text-xs text-[#F6F4F0] placeholder-[#F6F4F0]/40 focus:outline-none focus:border-[#7B8B76] w-full">
+          <button type="submit" class="bg-[#F6F4F0] text-[#121210] px-4 py-2 text-xs uppercase tracking-widest font-medium hover:bg-[#7B8B76] hover:text-[#F6F4F0] transition-colors">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-2 border-t border-[#F6F4F0]/10 flex flex-col md:flex-row justify-between items-center text-[10px] text-[#F6F4F0]/40 uppercase tracking-widest gap-2">
+      <p>&copy; 2026 SOLENN LABEL INC. ALL RIGHTS RESERVED.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-[#F6F4F0] transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-[#F6F4F0] transition-colors">Terms and Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts: Header & Journal Controller -->
+  <script type="module" src="js/index.js"></script>
+  <script type="module" src="js/cart-drawer.js"></script>
+  <script>
+    // Inline Editorial Articles Database (Rule 6: simple structure inside Journal implementation)
+    const articles = [
+      {
+        id: 'art-1',
+        title: 'The Art of Wearing Less',
+        category: 'Style Notes',
+        date: 'October 24, 2026',
+        image: '/images/washed/Washed front.jpg',
+        excerpt: 'True elegance lies in subtraction. Exploring why stripping away the non-essential elevates personal style to an art form.',
+        introduction: 'In a visual landscape dominated by excess, true distinction belongs to those who embrace reduction. When every detail is intentional, clothing ceases to be a costume and becomes a natural extension of character.',
+        content: `
+          <p class="mb-6">We live in an era of accumulation. Trend cycles accelerate from weeks into days, and wardrobes overflow with garments that demand attention yet offer little enduring resonance. Against this background of noise, SOLENN approaches design through the uncompromising lens of subtraction.</p>
+          <p class="mb-6">To wear less is not to abandon expression; rather, it is to refine it. When you eliminate superfluous branding, distracting hardware, and fleeting seasonal gimmicks, what remains is pure proportion, tactile integrity, and architectural silhouette.</p>
+          <h3 class="font-serif text-3xl mt-12 mb-4">The Weight of Silence</h3>
+          <p class="mb-6">Consider the tactile nature of heavyweight unbrushed cotton twill or mineral-dyed charcoal. These materials do not shout for validation. They acquire character slowly through wear, softening to the contours of the wearer over years rather than months.</p>
+          <p class="mb-6">Quiet luxury is essentially about confidence. It requires no external badge or emphatic logo to justify its presence. It rests entirely on the harmony between cut, drape, and the quiet dignity of the person inside the garment.</p>
+        `,
+        inlineImages: [
+          { src: '/images/washed/washed side.jpg', caption: 'Detail: Side proportion and unbrushed twill' },
+          { src: '/images/washed/washed rear.jpg', caption: 'Rear structural seam work' }
+        ]
+      },
+      {
+        id: 'art-2',
+        title: 'The Details That Matter',
+        category: 'Design & Detail',
+        date: 'October 18, 2026',
+        image: '/images/black/black front.jpg',
+        excerpt: 'From reinforced structural brims to muted mineral dyes, the microscopic choices that define a modern classic.',
+        introduction: 'Perfection is rarely noticed, but its absence is immediately felt. In our atelier, every millimeter of curvature, stitch density, and fabric weight is interrogated before a single piece enters production.',
+        content: `
+          <p class="mb-6">When constructing our foundational headwear and apparel pieces, the exterior often tells only half the story. The true architecture of a garment resides in its internal engineering—the hidden stiffeners, the precise stitch tension, and the tactile feel of the lining against skin.</p>
+          <p class="mb-6">Our signature curved brims are not merely styled; they are structurally balanced to maintain form across varying climates while remaining supple enough for effortless daily wear.</p>
+          <h3 class="font-serif text-3xl mt-12 mb-4">Mineral Dyes & Patina</h3>
+          <p class="mb-6">Standard industrial dyeing produces flat, uniform surfaces that never evolve. SOLENN utilizes custom mineral and pigment dyeing techniques that allow garments to develop a rich, personal patina over time. No two pieces age in the exact same manner.</p>
+        `,
+        inlineImages: [
+          { src: '/images/black/black side.jpg', caption: 'Contour study: Solid black edition' },
+          { src: '/images/black/black close.jpg', caption: 'Macro texture: Heavyweight cotton weave' }
+        ]
+      },
+      {
+        id: 'art-3',
+        title: 'Beyond the Everyday',
+        category: 'Culture & People',
+        date: 'October 10, 2026',
+        image: '/images/olive/olive front.jpg',
+        excerpt: 'Conversations on architecture, silent spaces, and how our immediate surroundings shape the garments we inhabit.',
+        introduction: 'Garments are built for the spaces we navigate—from the brutalist concrete structures of Paris to the sprawling steel geometry of New York. Architecture and clothing share a vocabulary of line, void, and structure.',
+        content: `
+          <p class="mb-6">Our Autumn campaign was photographed amidst the stark concrete courtyards of European brutalism. We chose these locations not for dramatic effect, but because they mirror our philosophy: unadorned strength, brutal honesty of materials, and timeless geometric proportion.</p>
+          <p class="mb-6">When you stand within a monumental concrete hall, ornamentation feels intrusive. The space requires calm, monumental simplicity. Clothing should do precisely the same when worn against the urban backdrop.</p>
+          <h3 class="font-serif text-3xl mt-12 mb-4">Sanctuary in Motion</h3>
+          <p class="mb-6">Modern life is characterized by transition. We move fluidly from transit to workspaces, private sanctuaries to open landscapes. SOLENN garments are engineered to bridge these environments without friction.</p>
+        `,
+        inlineImages: [
+          { src: '/images/olive/olive side.jpg', caption: 'Olive utility in urban context' },
+          { src: '/images/olive/olive top.jpg', caption: 'Topographic proportion study' }
+        ]
+      },
+      {
+        id: 'art-4',
+        title: 'Drop 01: The Private Showcase',
+        category: 'Solenn Stories',
+        date: 'September 28, 2026',
+        image: '/images/beige/beige front.jpg',
+        excerpt: 'An inside look at our private preview showroom gatherings in Paris and New York ahead of public allocation.',
+        introduction: 'Ahead of our formal public release, we invited select patrons and registry members to private showroom viewings in Paris and New York to experience Drop 01 tactilely.',
+        content: `
+          <p class="mb-6">There is an intimacy to experiencing garments in person before any digital campaign is launched. Fabric weight, drape, and tone are best understood under natural light in a quiet room.</p>
+          <p class="mb-6">The response to our initial releases—ranging from the Light Beige Sports cap to the Charcoal Washed Essential—has reaffirmed our belief that discernment outlives hype.</p>
+        `,
+        inlineImages: [
+          { src: '/images/beige/beige side.jpg', caption: 'Exhibition lighting: Light beige sports' },
+          { src: '/images/beige/beige rear.jpg', caption: 'Adjustable matte hardware detail' }
+        ]
+      }
+    ];
+
+    // Render article cards grid
+    function renderArticles(filter = 'all') {
+      const grid = document.getElementById('articles-grid');
+      if (!grid) return;
+
+      const filtered = filter === 'all' ? articles : articles.filter(a => a.category === filter);
+
+      grid.innerHTML = filtered.map(art => `
+        <article onclick="openArticle('${art.id}')" class="group cursor-pointer bg-[#EAE8E1]/40 border border-[#121210]/10 overflow-hidden flex flex-col justify-between hover:border-[#7B8B76] transition-all">
+          <div>
+            <div class="aspect-[4/3] bg-[#EAE8E1] overflow-hidden relative mb-6">
+              <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-6 pt-0 space-y-3">
+              <div class="flex justify-between items-center text-[10px] uppercase tracking-widest text-[#6B6A65]">
+                <span>${art.category}</span>
+                <span>${art.date}</span>
+              </div>
+              <h3 class="font-serif text-2xl group-hover:text-[#7B8B76] transition-colors leading-snug">${art.title}</h3>
+              <p class="text-xs font-light text-[#6B6A65] leading-relaxed line-clamp-2">${art.excerpt}</p>
+            </div>
+          </div>
+          <div class="p-6 pt-4 border-t border-[#121210]/10 flex items-center justify-between text-xs uppercase tracking-[0.2em] font-semibold">
+            <span>Read Story</span>
+            <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Filter articles
+    window.filterArticles = function(category) {
+      document.querySelectorAll('.journal-filter-btn').forEach(btn => {
+        if (btn.dataset.category === category) {
+          btn.classList.remove('bg-[#EAE8E1]', 'text-[#121210]');
+          btn.classList.add('bg-[#121210]', 'text-[#F6F4F0]');
+        } else {
+          btn.classList.remove('bg-[#121210]', 'text-[#F6F4F0]');
+          btn.classList.add('bg-[#EAE8E1]', 'text-[#121210]');
+        }
+      });
+      renderArticles(category);
+    };
+
+    // Open article detail view
+    window.openArticle = function(id) {
+      const art = articles.find(a => a.id === id);
+      if (!art) return;
+
+      const indexView = document.getElementById('journal-index-view');
+      const detailView = document.getElementById('article-detail-view');
+      const container = document.getElementById('article-content-container');
+
+      indexView.classList.add('hidden');
+      detailView.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.location.hash = id;
+
+      // Related stories (exclude current)
+      const related = articles.filter(a => a.id !== id).slice(0, 2);
+
+      container.innerHTML = `
+        <div class="mb-6 flex items-center gap-4 text-xs uppercase tracking-[0.2em] text-[#6B6A65]">
+          <span class="px-3 py-1 bg-[#121210] text-[#F6F4F0]">${art.category}</span>
+          <span>&bull;</span>
+          <span>${art.date}</span>
+        </div>
+        <h1 class="font-serif text-4xl md:text-7xl font-light mb-8 leading-tight">${art.title}</h1>
+        <p class="text-lg md:text-xl font-light text-[#6B6A65] leading-relaxed mb-12 italic border-l-2 border-[#7B8B76] pl-6">
+          ${art.introduction}
+        </p>
+
+        <!-- Article Hero Image -->
+        <div class="aspect-[16/9] bg-[#EAE8E1] mb-12 overflow-hidden shadow-lg">
+          <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Main Body Content -->
+        <div class="prose max-w-none text-base font-light text-[#6B6A65] leading-relaxed mb-16">
+          ${art.content}
+        </div>
+
+        <!-- Inline Photographs Grid -->
+        ${art.inlineImages && art.inlineImages.length > 0 ? `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-16">
+            ${art.inlineImages.map(img => `
+              <div>
+                <div class="aspect-[4/3] bg-[#EAE8E1] overflow-hidden mb-3">
+                  <img src="${img.src}" alt="${img.caption}" class="w-full h-full object-cover">
+                </div>
+                <p class="text-[11px] uppercase tracking-widest text-[#6B6A65] text-center">${img.caption}</p>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        <!-- Related Stories Section -->
+        <div class="border-t border-[#121210]/10 pt-16 mt-20">
+          <h3 class="font-serif text-3xl mb-8">Related Dispatches</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            ${related.map(rel => `
+              <div onclick="openArticle('${rel.id}')" class="group cursor-pointer bg-[#EAE8E1]/30 p-6 border border-[#121210]/10 hover:border-[#7B8B76] transition-all">
+                <div class="aspect-[16/10] bg-[#EAE8E1] overflow-hidden mb-4">
+                  <img src="${rel.image}" alt="${rel.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <span class="text-[10px] uppercase tracking-widest text-[#6B6A65]">${rel.category}</span>
+                <h4 class="font-serif text-xl mt-1 group-hover:text-[#7B8B76] transition-colors">${rel.title}</h4>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // Close article detail view
+    window.closeArticle = function() {
+      const indexView = document.getElementById('journal-index-view');
+      const detailView = document.getElementById('article-detail-view');
+
+      detailView.classList.add('hidden');
+      indexView.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+
+    // Initialize on load & handle hash navigation
+    document.addEventListener('DOMContentLoaded', () => {
+      renderArticles('all');
+
+      if (window.location.hash) {
+        const id = window.location.hash.substring(1);
+        if (articles.some(a => a.id === id)) {
+          openArticle(id);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
