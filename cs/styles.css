@@ -47,3 +47,6 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+[hidden] { display: none !important; }
+.modal-thumb img { width: 60px; height: 60px; object-fit: cover; }

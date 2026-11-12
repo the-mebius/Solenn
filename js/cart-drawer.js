@@ -1,5 +1,70 @@
 // SOLENN — Interactive Cart Drawer Component
 
+const CART_STORAGE_KEY = 'solenn_cart';
+
+function getStoredCart() {
+  try {
+    const data = localStorage.getItem(CART_STORAGE_KEY);
+    return data ? JSON.parse(data) : { items: [], subtotal: 0, totalQuantity: 0 };
+  } catch {
+    return { items: [], subtotal: 0, totalQuantity: 0 };
+  }
+}
+
+function saveAndDispatchCart(cart) {
+  try {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  } catch {}
+  window.dispatchEvent(new CustomEvent('cart:updated', { detail: cart }));
+}
+
+window.cartService = {
+  getCart: getStoredCart,
+  addItem(product, size = 'One Size') {
+    const cart = getStoredCart();
+    const existing = cart.items.find(i => i.id === product.id && i.size === size);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.items.push({
+        id: product.id,
+        name: product.name,
+        price: Number(product.price),
+        color: product.color || 'Signature',
+        size: size,
+        image: Array.isArray(product.images) && product.images.length > 0 ? product.images : [product.image_url || product.image],
+        quantity: 1
+      });
+    }
+    cart.totalQuantity = cart.items.reduce((sum, i) => sum + i.quantity, 0);
+    cart.subtotal = cart.items.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+    saveAndDispatchCart(cart);
+  },
+  updateQuantity(id, quantity) {
+    const cart = getStoredCart();
+    const item = cart.items.find(i => String(i.id) === String(id));
+    if (item) {
+      item.quantity = quantity;
+      if (item.quantity <= 0) {
+        cart.items = cart.items.filter(i => String(i.id) !== String(id));
+      }
+    }
+    cart.totalQuantity = cart.items.reduce((sum, i) => sum + i.quantity, 0);
+    cart.subtotal = cart.items.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+    saveAndDispatchCart(cart);
+  },
+  removeItem(id) {
+    const cart = getStoredCart();
+    cart.items = cart.items.filter(i => String(i.id) !== String(id));
+    cart.totalQuantity = cart.items.reduce((sum, i) => sum + i.quantity, 0);
+    cart.subtotal = cart.items.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+    saveAndDispatchCart(cart);
+  },
+  async checkout() {
+    alert('Proceeding to secure checkout...');
+  }
+};
+
 function initCartDrawer() {
   if (document.getElementById('solenn-cart-drawer')) return;
 
@@ -51,13 +116,13 @@ function initCartDrawer() {
     const decBtn = e.target.closest('[data-action="decrease"]');
     if (decBtn) {
       const id = decBtn.dataset.id;
-      const item = cartService.getCart().items.find(i => i.id === id);
+      const item = cartService.getCart().items.find(i => String(i.id) === String(id));
       if (item) cartService.updateQuantity(id, item.quantity - 1);
     }
     const incBtn = e.target.closest('[data-action="increase"]');
     if (incBtn) {
       const id = incBtn.dataset.id;
-      const item = cartService.getCart().items.find(i => i.id === id);
+      const item = cartService.getCart().items.find(i => String(i.id) === String(id));
       if (item) cartService.updateQuantity(id, item.quantity + 1);
     }
     const removeBtn = e.target.closest('[data-action="remove"]');

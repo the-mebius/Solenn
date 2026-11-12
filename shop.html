@@ -98,6 +98,7 @@
     <div id="product-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Dynamically rendered products -->
     </div>
+    
 
     <!-- Empty State (hidden by default) -->
     <div id="empty-state" class="hidden text-center py-24">
@@ -169,13 +170,40 @@
     </div>
   </footer>
 
+
   <!-- External JS Module -->
   
   <script type="module" src="js/index.js"></script>
   <script type="module" src="js/cart-drawer.js"></script>
-  <script type="module" src="js/shop.js"></script>
+  <script type="module">
+  import { initProducts } from './js/products.js';
+  initProducts('#product-grid');
+  </script>
 
   
+ <div id="product-modal" hidden style="position:fixed;inset:0;z-index:999;background:rgba(18,18,16,0.6);backdrop-filter:blur(4px);display:grid;place-items:center;padding:1rem;">
+  <div style="background:#F6F4F0;border:1px solid rgba(18,18,16,0.15);max-width:860px;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));position:relative;color:#121210;font-family:Manrope,sans-serif;box-shadow:0 25px 50px -12px rgba(18,18,16,0.25);">
+    <button id="modal-close" type="button" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#121210;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;cursor:pointer;padding:0.5rem;">Close [ESC]</button>
 
+    <div style="padding:1.5rem;background:#EAE8E1;">
+      <img id="modal-main-img" src="" alt="" style="width:100%;aspect-ratio:1/1;object-fit:cover;background:#F6F4F0;" />
+      <div id="modal-thumbs" style="display:flex;gap:0.5rem;margin-top:0.75rem;overflow-x:auto;"></div>
+    </div>
+
+    <div style="padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <p style="font-size:10px;text-transform:uppercase;letter-spacing:0.25em;color:#6B6A65;margin-bottom:0.5rem;">SOLENN Catalogue</p>
+        <h2 id="modal-title" style="font-family:'Instrument Serif',serif;font-size:2.25rem;font-weight:300;margin:0 0 0.75rem;line-height:1.1;"></h2>
+        <p id="modal-price" style="font-size:1.25rem;font-weight:400;margin:0 0 1.5rem;"></p>
+        <div style="border-top:1px solid rgba(18,18,16,0.1);padding-top:1rem;margin-top:1rem;font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:#6B6A65;">
+          <p style="margin-bottom:0.5rem;">Colorway: <span id="modal-color" style="color:#121210;"></span></p>
+          <p>Status: <span id="modal-stock" style="color:#121210;"></span></p>
+        </div>
+      </div>
+      <button id="modal-add-to-bag" type="button" style="width:100%;padding:1rem;background:#121210;color:#F6F4F0;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:0.2em;font-size:11px;font-weight:500;">Add to Bag</button>
+    </div>
+  </div>
+</div>
+</div>
 </body>
 </html>

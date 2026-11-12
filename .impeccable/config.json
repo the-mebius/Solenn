@@ -164,6 +164,20 @@
         ],
         "createdAt": "2026-11-11T11:33:27.787Z",
         "reason": "User specified mandatory SOLENN brand secondary font Instrument Serif"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "Desktop/Solenn/shop.html"
+        ],
+        "createdAt": "2026-11-12T14:19:06.584Z",
+        "reason": "Dynamic images rendered at runtime from products data"
+      },
+      {
+        "rule": "overused-font",
+        "value": "instrument serif",
+        "createdAt": "2026-11-12T15:02:03.096Z"
       }
     ]
   }
