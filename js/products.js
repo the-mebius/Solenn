@@ -55,7 +55,7 @@ function openProductModal(cap) {
   let modal = document.getElementById('product-modal');
   if (!modal) {
     const modalHtml = `
-      <div id="product-modal" hidden style="position:fixed;inset:0;z-index:999;background:rgba(18,18,16,0.6);backdrop-filter:blur(4px);display:grid;place-items:center;padding:1rem;">
+      <div id="product-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(18,18,16,0.6);backdrop-filter:blur(4px);place-items:center;padding:1rem;">
         <div style="background:#F6F4F0;border:1px solid rgba(18,18,16,0.15);max-width:860px;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));position:relative;color:#121210;font-family:Manrope,sans-serif;box-shadow:0 25px 50px -12px rgba(18,18,16,0.25);">
           <button id="modal-close" type="button" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#121210;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;cursor:pointer;padding:0.5rem;">Close [ESC]</button>
           <div style="padding:1.5rem;background:#EAE8E1;">
@@ -130,25 +130,25 @@ function openProductModal(cap) {
       if (typeof window.openSolennCart === 'function') {
         window.openSolennCart();
       }
-      modal.hidden = true;
+      modal.style.display = 'none';
     });
   }
 
-  modal.hidden = false;
+  modal.style.display = 'grid';
 }
 
 // Close handlers
 document.addEventListener('click', (e) => {
   const modal = document.getElementById('product-modal');
-  if (!modal || modal.hidden) return;
+  if (!modal || modal.style.display === 'none') return;
   if (e.target === modal || e.target.closest('#modal-close')) {
-    modal.hidden = true;
+    modal.style.display = 'none';
   }
 });
 
 document.addEventListener('keydown', (e) => {
   const modal = document.getElementById('product-modal');
-  if (e.key === 'Escape' && modal && !modal.hidden) {
-    modal.hidden = true;
+  if (e.key === 'Escape' && modal && modal.style.display !== 'none') {
+    modal.style.display = 'none';
   }
 });
