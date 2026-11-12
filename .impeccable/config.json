@@ -110,6 +110,60 @@
         ],
         "createdAt": "2026-11-11T10:22:48.585Z",
         "reason": "User specified mandatory SOLENN brand secondary font Instrument Serif"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "Desktop/Solenn/index.html"
+        ],
+        "createdAt": "2026-11-11T11:33:27.542Z",
+        "reason": "User specified brand design system and typography hierarchy"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "Desktop/Solenn/index.html"
+        ],
+        "createdAt": "2026-11-11T11:33:27.581Z",
+        "reason": "User specified mandatory SOLENN brand background color #F6F4F0 (Calcified Stone)"
+      },
+      {
+        "rule": "overused-font",
+        "value": "instrument serif",
+        "files": [
+          "Desktop/Solenn/index.html"
+        ],
+        "createdAt": "2026-11-11T11:33:27.626Z",
+        "reason": "User specified mandatory SOLENN brand secondary font Instrument Serif"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "Desktop/Solenn/about.html"
+        ],
+        "createdAt": "2026-11-11T11:33:27.674Z",
+        "reason": "User specified brand design system and typography hierarchy"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "Desktop/Solenn/about.html"
+        ],
+        "createdAt": "2026-11-11T11:33:27.741Z",
+        "reason": "User specified mandatory SOLENN brand background color #F6F4F0 (Calcified Stone)"
+      },
+      {
+        "rule": "overused-font",
+        "value": "instrument serif",
+        "files": [
+          "Desktop/Solenn/about.html"
+        ],
+        "createdAt": "2026-11-11T11:33:27.787Z",
+        "reason": "User specified mandatory SOLENN brand secondary font Instrument Serif"
       }
     ]
   }
