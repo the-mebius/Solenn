@@ -2,7 +2,7 @@ let products = []; // 1. Create a variable to hold the fetched data
 let currentCategory = 'all';
 
 // 2. Properly handle the fetch response and assign it to the 'products' array
-fetch('./products.json')
+fetch('./public/products.json')
   .then(response => response.json())
   .then(data => {
     products = data; 
