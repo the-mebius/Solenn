@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solenn — Live Supabase Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-neutral-950 text-neutral-100 p-10 font-sans">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-2xl font-semibold tracking-tight mb-6">Solenn Live Inventory Preview</h1>
+    <div id="status" class="text-sm text-neutral-400 mb-4">Connecting to Supabase...</div>
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://indbpuvsnwjxouoqebsv.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_F0phpmfxjM_WM5o43cpumg_XCLnxkny';
+    
+    const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    async function loadPreview() {
+      const statusEl = document.getElementById('status');
+      const gridEl = document.getElementById('product-grid');
+
+      const { data, error } = await client
+        .from('products')
+        .select('*')
+        .eq('is_active', true);
+
+      if (error) {
+        statusEl.textContent = `Error: ${error.message}`;
+        statusEl.classList.replace('text-neutral-400', 'text-red-400');
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        statusEl.textContent = 'Connected, but 0 rows returned. Check your RLS SELECT policy or is_active status.';
+        return;
+      }
+
+      statusEl.textContent = `Showing ${data.length} active product(s) from Supabase:`;
+
+      gridEl.innerHTML = data.map(cap => `
+        <div class="border border-neutral-800 bg-neutral-900 rounded-lg overflow-hidden">
+          <img src="${cap.image_url}" alt="${cap.name}" class="w-full h-64 object-cover bg-neutral-800" />
+          <div class="p-4">
+            <div class="flex justify-between items-center">
+              <h2 class="font-medium text-lg">${cap.name}</h2>
+              <span class="text-neutral-300">₹${cap.price}</span>
+            </div>
+            <p class="text-xs text-neutral-400 mt-1">Color: ${cap.color || 'Standard'} • Stock: ${cap.stock}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    loadPreview();
+  </script>
+</body>
+</html>
